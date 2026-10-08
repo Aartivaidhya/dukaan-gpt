@@ -1,11 +1,55 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Dukaan-GPT</title>
-<style>body{font-family:Poppins;background:#FFF8F0}.nav{background:#FF6B00;color:#fff;padding:15px;display:flex;justify-content:space-between}.cards{display:flex;gap:15px;padding:15px}.card{background:#fff;padding:20px;border-radius:12px;flex:1}.stock{background:#fff;margin:15px;padding:15px;border-radius:12px}.b{background:#fff;padding:20px;border-radius:12px;width:300px}#m{position:fixed;top:0;left:0;width:100%;height:100%;background:#0008;display:none;align-items:center;justify-content:center}input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}.btn{background:#FF6B00;color:white;border:0;padding:10px 16px;border-radius:24px;cursor:pointer}</style>
-</head><body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dukaan-GPT | Dhar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#FFF7ED}
+.nav{background:#FF6B00;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;font-weight:600}
+.cards{display:flex;gap:14px;padding:18px;flex-wrap:wrap}
+.card{background:#fff;padding:18px 20px;border-radius:16px;flex:1;min-width:140px;box-shadow:0 2px 8px #0001;display:flex;justify-content:space-between;align-items:center}
+.card b{font-size:28px;display:block}
+.card small{color:#666}
+.card.dark{background:#102A26;color:#fff}.card.dark small{color:#B9E4D9}
+.stock{background:#fff;margin:0 18px 18px;padding:18px;border-radius:16px;box-shadow:0 2px 8px #0001}
+.stock-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.btn{border:0;padding:10px 18px;border-radius:24px;cursor:pointer;font-weight:600}
+.btn-orange{background:#FF6B00;color:#fff}
+.btn-dark{background:#102A26;color:#fff}
+table{width:100%;border-collapse:collapse}th{color:#888;font-weight:400;font-size:13px;padding:10px;text-align:left}td{padding:14px 10px;border-top:1px solid #f0e6da;font-weight:500}
+#m{position:fixed;inset:0;background:#0006;display:none;align-items:center;justify-content:center;z-index:99}
+.box{background:#fff;padding:22px;border-radius:16px;width:90%;max-width:340px}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #e5d5c3;border-radius:10px;outline:none}
+</style>
+</head>
+<body>
 <div class="nav"><span>🏪 Dukaan-GPT | Dhar</span><span>Welcome, Aarti</span></div>
-<div class="cards"><div class="card"><div><h2 id="a">50</h2><small>Total Stock</small></div><div>📦</div></div><div class="card"><div><h2 id="b">1</h2><small>Total Items</small></div><div>👜</div></div><div class="card" style="background:#0f2b26;color:white"><h2>₹2,450</h2><small>Aaj ka Profit</small></div></div>
-<div class="stock"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><h3>Aapki Dukaan ka Stock</h3><div><button onclick="startVoice()" style="background:#0f2b26;color:white;border:0;padding:10px 16px;border-radius:24px;margin-right:10px;cursor:pointer">🎤 Bolke</button><button class="btn" onclick="document.getElementById('m').style.display='flex'">+ Add Item</button></div></div>
-<table width="100%"><tr><th>Item</th><th>Stock</th><th>Price</th></tr><tbody id="t"><tr><td><b>parle-g</b></td><td>50</td><td>₹10</td></tr></tbody></table></div>
-<div id="m"><div class="b"><h3>Naya Item</h3><input id="n" placeholder="Naam e.g. Good Day"><input id="s" type="number" placeholder="Stock"><input id="p" type="number" placeholder="Price"><button class="btn" onclick="add()">Save</button> <button onclick="document.getElementById('m').style.display='none'">Close</button></div></div>
+
+<div class="cards">
+<div class="card"><div><b id="a">50</b><small>Total Stock</small></div><div style="font-size:28px">📦</div></div>
+<div class="card"><div><b id="b">1</b><small>Total Items</small></div><div style="font-size:28px">👜</div></div>
+<div class="card dark"><div><b>₹2,450</b><small>Aaj ka Profit</small></div><div style="font-size:28px">💰</div></div>
+</div>
+
+<div class="stock">
+<div class="stock-top">
+<h3 style="font-size:18px">Aapki Dukaan ka Stock</h3>
+<div style="display:flex;gap:10px">
+<button class="btn btn-dark" onclick="startVoice()">🎤 Bolke</button>
+<button class="btn btn-orange" onclick="document.getElementById('m').style.display='flex'">+ Add Item</button>
+</div>
+</div>
+<table><thead><tr><th>Item</th><th>Stock</th><th>Price</th></tr></thead>
+<tbody id="t"><tr><td><b>parle-g</b></td><td>50</td><td>₹10</td></tr></tbody></table>
+</div>
+
+<div id="m"><div class="box"><h3>Naya Item Add Karo</h3>
+<input id="n" placeholder="Naam e.g. Good Day"><input id="s" type="number" placeholder="Stock"><input id="p" type="number" placeholder="Price">
+<div style="display:flex;gap:10px;margin-top:10px"><button class="btn btn-orange" style="flex:1" onclick="add()">Save</button><button class="btn" style="flex:1;background:#eee" onclick="document.getElementById('m').style.display='none'">Close</button></div>
+</div></div>
+
 <script>
 function add(){
 let name=document.getElementById('n').value||'New Item';
@@ -15,12 +59,14 @@ document.getElementById('t').innerHTML+=`<tr><td><b>${name}</b></td><td>${st}</t
 document.getElementById('a').innerText=parseInt(document.getElementById('a').innerText)+st;
 document.getElementById('b').innerText=parseInt(document.getElementById('b').innerText)+1;
 document.getElementById('m').style.display='none';
+document.getElementById('n').value='';document.getElementById('s').value='';document.getElementById('p').value='';
 }
 function startVoice(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ alert("Chrome me kholo"); return; }
-  const rec = new SR(); rec.lang='hi-IN'; rec.start();
-  rec.onresult=(e)=>{ document.getElementById('m').style.display='flex'; document.getElementById('n').value=e.results[0][0].transcript; }
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(!SR){alert("Chrome me kholo");return;}
+const rec=new SR();rec.lang='hi-IN';rec.start();rec.onstart=()=>{document.querySelector('.btn-dark').innerText='🎧 Sun raha hu...'};
+rec.onresult=(e)=>{document.getElementById('m').style.display='flex';document.getElementById('n').value=e.results[0][0].transcript;document.querySelector('.btn-dark').innerText='🎤 Bolke'};
+rec.onerror=()=>{document.querySelector('.btn-dark').innerText='🎤 Bolke'};
 }
 </script>
 </body></html>
