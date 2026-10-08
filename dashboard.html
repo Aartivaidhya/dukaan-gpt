@@ -1,76 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dukaan-GPT | Dhar</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-body{font-family:'Poppins',sans-serif; background:#FFF8F0;}
-.navbar{background:linear-gradient(90deg,#FF6B00,#FF9A00);}
-.card-stat{border:none; border-radius:20px; transition:0.3s;}
-.card-stat:hover{transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.1) !important;}
-.card-profit{background:#122620; color:white;}
-.badge-cat{background:#FFE9D0; color:#FF6B00; border-radius:20px; padding:6px 12px; font-weight:600;}
-.table-card{border-radius:20px; border:none;}
-</style>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Dukaan-GPT</title>
+<style>body{margin:0;font-family:Poppins;background:#FFF8F0}.nav{background:#FF6B00;color:#fff;padding:15px 25px;display:flex;justify-content:space-between;font-weight:bold}.cards{display:flex;gap:15px;padding:20px;flex-wrap:wrap}.card{background:#fff;border-radius:16px;padding:20px;flex:1;min-width:150px;box-shadow:0 4px 10px #0001}.stock{background:#fff;margin:0 20px;border-radius:16px;padding:20px}.btn{background:#FF6B00;color:#fff;border:0;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #eee;text-align:left}#m{display:none;position:fixed;inset:0;background:#0005;justify-content:center;align-items:center}.b{background:#fff;padding:20px;border-radius:15px;width:90%;max-width:350px}.b input{width:100%;padding:10px;margin:7px 0;border:1px solid #ddd;border-radius:8px}</style>
 </head>
 <body>
-
-<nav class="navbar p-3 mb-4 shadow-sm">
-  <div class="container d-flex justify-content-between">
-    <span class="text-white fw-bold fs-5"><i class="fa-solid fa-store me-2"></i>Dukaan-GPT | Dhar</span>
-    <span class="text-white small">Welcome, Aarti</span>
-  </div>
-</nav>
-
-<div class="container pb-5">
-  <div class="row g-3 mb-4">
-    <div class="col-6 col-lg-4">
-      <div class="card card-stat p-4 shadow-sm h-100 bg-white">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">50</h2><small class="text-muted">Total Stock</small></div>
-          <div class="p-3 rounded-circle" style="background:#FFF0E0;"><i class="fa-solid fa-boxes-stacked text-warning fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-lg-4">
-      <div class="card card-stat p-4 shadow-sm h-100 bg-white">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">1</h2><small class="text-muted">Total Items</small></div>
-          <div class="p-3 rounded-circle" style="background:#E6F4EA;"><i class="fa-solid fa-bag-shopping text-success fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-4">
-      <div class="card card-stat card-profit p-4 shadow h-100">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">₹ 2,450</h2><small class="opacity-75">Aaj ka Profit</small></div>
-          <div class="p-3 rounded-circle bg-white bg-opacity-25"><i class="fa-solid fa-chart-line fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card table-card shadow-sm">
-    <div class="card-body p-4">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-bold mb-0">Aapki Dukaan ka Stock</h5>
-        <a href="/admin/" class="btn btn-sm text-white px-3 py-1" style="background:#FF6B00; border-radius:20px;">+ Add Item</a>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <thead class="table-light"><tr><th>Item</th><th>Category</th><th>Stock</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td class="fw-semibold">parle-g</td><td><span class="badge-cat">biscuit</span></td><td>50</td><td class="fw-bold">₹10</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <p class="text-center text-muted small mt-4">Made with ❤️ in Dhar, MP for Kirana Stores</p>
-</div>
+<div class="nav"><span>🏪 Dukaan-GPT | Dhar</span><span>Welcome, Aarti</span></div>
+<div class="cards"><div class="card"><div><h2 id="a">50</h2><small>Total Stock</small></div><div>📦</div></div><div class="card"><div><h2 id="b">1</h2><small>Total Items</small></div><div>👜</div></div><div class="card" style="background:#0f2b26;color:#fff"><div><h2>₹2,450</h2><small>Aaj ka Profit</small></div></div></div>
+<div class="stock"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><h3>Aapki Dukaan ka Stock</h3><button class="btn" onclick="m.style.display='flex'">+ Add Item</button></div><table><thead><tr><th>Item</th><th>Stock</th><th>Price</th></tr></thead><tbody id="t"><tr><td><b>parle-g</b></td><td>50</td><td>₹10</td></tr></tbody></table></div>
+<div id="m"><div class="b"><h3>Naya Item</h3><input id="n" placeholder="Naam e.g. Good Day"><input id="s" type="number" placeholder="Stock e.g. 100"><input id="p" type="number" placeholder="Price e.g. 20"><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" style="flex:1" onclick="add()">Add Karo</button><button class="btn" style="flex:1;background:#eee;color:#333" onclick="m.style.display='none'">Cancel</button></div></div></div>
+<script>
+function add(){
+let name=document.getElementById('n').value||'New Item';
+let st=parseInt(document.getElementById('s').value)||10;
+let pr=parseInt(document.getElementById('p').value)||10;
+document.getElementById('t').innerHTML+=`<tr><td><b>${name}</b></td><td>${st}</td><td>₹${pr}</td></tr>`;
+document.getElementById('a').innerText=parseInt(document.getElementById('a').innerText)+st;
+document.getElementById('b').innerText=parseInt(document.getElementById('b').innerText)+1;
+document.getElementById('m').style.display='none';
+}
+</script>
 </body>
 </html>
