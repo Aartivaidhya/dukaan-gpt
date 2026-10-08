@@ -1,76 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dukaan-GPT | Dhar</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<title>Dukaan-GPT - Aarti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-body{font-family:'Poppins',sans-serif; background:#FFF8F0;}
-.navbar{background:linear-gradient(90deg,#FF6B00,#FF9A00);}
-.card-stat{border:none; border-radius:20px; transition:0.3s;}
-.card-stat:hover{transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.1) !important;}
-.card-profit{background:#122620; color:white;}
-.badge-cat{background:#FFE9D0; color:#FF6B00; border-radius:20px; padding:6px 12px; font-weight:600;}
-.table-card{border-radius:20px; border:none;}
+body{font-family:system-ui;background:#f1f5f9;margin:0;padding:20px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px #0001;display:inline-block;margin:10px;min-width:150px}
+.btn{background:#16a34a;color:white;border:0;padding:10px 16px;border-radius:8px;cursor:pointer}
+.btn2{background:#0f2b26;color:white;border:0;padding:10px 16px;border-radius:8px;cursor:pointer;margin-left:8px}
+#m{position:fixed;top:0;left:0;width:100%;height:100%;background:#0008;display:none;align-items:center;justify-content:center}
+.box{background:white;padding:20px;border-radius:12px;width:300px}
+input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
 </style>
 </head>
 <body>
+<h2>🏪 Dukaan-GPT - Aarti Vaidhya</h2>
 
-<nav class="navbar p-3 mb-4 shadow-sm">
-  <div class="container d-flex justify-content-between">
-    <span class="text-white fw-bold fs-5"><i class="fa-solid fa-store me-2"></i>Dukaan-GPT | Dhar</span>
-    <span class="text-white small">Welcome, Aarti</span>
-  </div>
-</nav>
+<div class="card">Total Stock: <b id="s">60</b></div>
+<div class="card">Total Items: <b id="it">2</b></div>
+<div class="card">Aaj ka Profit: <b>₹2,450</b></div>
 
-<div class="container pb-5">
-  <div class="row g-3 mb-4">
-    <div class="col-6 col-lg-4">
-      <div class="card card-stat p-4 shadow-sm h-100 bg-white">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">50</h2><small class="text-muted">Total Stock</small></div>
-          <div class="p-3 rounded-circle" style="background:#FFF0E0;"><i class="fa-solid fa-boxes-stacked text-warning fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 col-lg-4">
-      <div class="card card-stat p-4 shadow-sm h-100 bg-white">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">1</h2><small class="text-muted">Total Items</small></div>
-          <div class="p-3 rounded-circle" style="background:#E6F4EA;"><i class="fa-solid fa-bag-shopping text-success fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-4">
-      <div class="card card-stat card-profit p-4 shadow h-100">
-        <div class="d-flex justify-content-between align-items-center">
-          <div><h2 class="fw-bold mb-0">₹ 2,450</h2><small class="opacity-75">Aaj ka Profit</small></div>
-          <div class="p-3 rounded-circle bg-white bg-opacity-25"><i class="fa-solid fa-chart-line fs-4"></i></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<br><br>
+<button class="btn" onclick="document.getElementById('m').style.display='flex'">+ Add Item</button>
+<button class="btn2" onclick="startVoice()">🎤 Bolke Add Karo</button>
 
-  <div class="card table-card shadow-sm">
-    <div class="card-body p-4">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-bold mb-0">Aapki Dukaan ka Stock</h5>
-        <a href="/admin/" class="btn btn-sm text-white px-3 py-1" style="background:#FF6B00; border-radius:20px;">+ Add Item</a>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <thead class="table-light"><tr><th>Item</th><th>Category</th><th>Stock</th><th>Price</th></tr></thead>
-          <tbody>
-            <tr><td class="fw-semibold">parle-g</td><td><span class="badge-cat">biscuit</span></td><td>50</td><td class="fw-bold">₹10</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <p class="text-center text-muted small mt-4">Made with ❤️ in Dhar, MP for Kirana Stores</p>
-</div>
+<div id="list" style="margin-top:20px"></div>
+
+<div id="m"><div class="box">
+<h3>Add Item</h3>
+<input id="n" placeholder="Item Name (Ex: Parle-G)">
+<input id="q" type="number" placeholder="Quantity (Ex: 10)">
+<button class="btn" onclick="add()">Save</button>
+<button class="btn2" onclick="document.getElementById('m').style.display='none'">Close</button>
+</div></div>
+
+<script>
+let stock = 60;
+let items = 2;
+
+function add(){
+  let name = document.getElementById('n').value;
+  let qty = parseInt(document.getElementById('q').value || 0);
+  if(!name) return alert("Naam likho");
+  stock += qty;
+  items++;
+  document.getElementById('s').innerText = stock;
+  document.getElementById('it').innerText = items;
+  document.getElementById('list').innerHTML += `<div class="card">${name} - ${qty}</div>`;
+  document.getElementById('m').style.display='none';
+  document.getElementById('n').value='';
+  document.getElementById('q').value='';
+}
+
+function startVoice(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert("Please open in Chrome"); return; }
+  const rec = new SR();
+  rec.lang = 'hi-IN';
+  rec.start();
+  alert("Bolo... sun raha hu 🎤");
+  rec.onresult = (e)=>{
+    let text = e.results[0][0].transcript;
+    document.getElementById('n').value = text;
+    document.getElementById('m').style.display='flex';
+  }
+}
+</script>
 </body>
 </html>
