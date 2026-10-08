@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Dukaan-GPT</title>
-<style>body{margin:0;font-family:Poppins;background:#FFF8F0}.nav{background:#FF6B00;color:#fff;padding:15px 25px;display:flex;justify-content:space-between;font-weight:bold}.cards{display:flex;gap:15px;padding:20px;flex-wrap:wrap}.card{background:#fff;border-radius:16px;padding:20px;flex:1;min-width:150px;box-shadow:0 4px 10px #0001}.stock{background:#fff;margin:0 20px;border-radius:16px;padding:20px}.btn{background:#FF6B00;color:#fff;border:0;padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:600}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #eee;text-align:left}#m{display:none;position:fixed;inset:0;background:#0005;justify-content:center;align-items:center}.b{background:#fff;padding:20px;border-radius:15px;width:90%;max-width:350px}.b input{width:100%;padding:10px;margin:7px 0;border:1px solid #ddd;border-radius:8px}</style>
-</head>
-<body>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Dukaan-GPT</title>
+<style>body{font-family:Poppins;background:#FFF8F0}.nav{background:#FF6B00;color:#fff;padding:15px;display:flex;justify-content:space-between}.cards{display:flex;gap:15px;padding:15px}.card{background:#fff;padding:20px;border-radius:12px;flex:1}.stock{background:#fff;margin:15px;padding:15px;border-radius:12px}.b{background:#fff;padding:20px;border-radius:12px;width:300px}#m{position:fixed;top:0;left:0;width:100%;height:100%;background:#0008;display:none;align-items:center;justify-content:center}input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:8px}.btn{background:#FF6B00;color:white;border:0;padding:10px 16px;border-radius:24px;cursor:pointer}</style>
+</head><body>
 <div class="nav"><span>🏪 Dukaan-GPT | Dhar</span><span>Welcome, Aarti</span></div>
-<div class="cards"><div class="card"><div><h2 id="a">50</h2><small>Total Stock</small></div><div>📦</div></div><div class="card"><div><h2 id="b">1</h2><small>Total Items</small></div><div>👜</div></div><div class="card" style="background:#0f2b26;color:#fff"><div><h2>₹2,450</h2><small>Aaj ka Profit</small></div></div></div>
-<div class="stock"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><h3>Aapki Dukaan ka Stock</h3><button class="btn" onclick="m.style.display='flex'">+ Add Item</button></div><table><thead><tr><th>Item</th><th>Stock</th><th>Price</th></tr></thead><tbody id="t"><tr><td><b>parle-g</b></td><td>50</td><td>₹10</td></tr></tbody></table></div>
-<div id="m"><div class="b"><h3>Naya Item</h3><input id="n" placeholder="Naam e.g. Good Day"><input id="s" type="number" placeholder="Stock e.g. 100"><input id="p" type="number" placeholder="Price e.g. 20"><div style="display:flex;gap:10px;margin-top:10px"><button class="btn" style="flex:1" onclick="add()">Add Karo</button><button class="btn" style="flex:1;background:#eee;color:#333" onclick="m.style.display='none'">Cancel</button></div></div></div>
+<div class="cards"><div class="card"><div><h2 id="a">50</h2><small>Total Stock</small></div><div>📦</div></div><div class="card"><div><h2 id="b">1</h2><small>Total Items</small></div><div>👜</div></div><div class="card" style="background:#0f2b26;color:white"><h2>₹2,450</h2><small>Aaj ka Profit</small></div></div>
+<div class="stock"><div style="display:flex;justify-content:space-between;margin-bottom:12px"><h3>Aapki Dukaan ka Stock</h3><div><button onclick="startVoice()" style="background:#0f2b26;color:white;border:0;padding:10px 16px;border-radius:24px;margin-right:10px;cursor:pointer">🎤 Bolke</button><button class="btn" onclick="document.getElementById('m').style.display='flex'">+ Add Item</button></div></div>
+<table width="100%"><tr><th>Item</th><th>Stock</th><th>Price</th></tr><tbody id="t"><tr><td><b>parle-g</b></td><td>50</td><td>₹10</td></tr></tbody></table></div>
+<div id="m"><div class="b"><h3>Naya Item</h3><input id="n" placeholder="Naam e.g. Good Day"><input id="s" type="number" placeholder="Stock"><input id="p" type="number" placeholder="Price"><button class="btn" onclick="add()">Save</button> <button onclick="document.getElementById('m').style.display='none'">Close</button></div></div>
 <script>
 function add(){
 let name=document.getElementById('n').value||'New Item';
@@ -18,6 +16,11 @@ document.getElementById('a').innerText=parseInt(document.getElementById('a').inn
 document.getElementById('b').innerText=parseInt(document.getElementById('b').innerText)+1;
 document.getElementById('m').style.display='none';
 }
+function startVoice(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ alert("Chrome me kholo"); return; }
+  const rec = new SR(); rec.lang='hi-IN'; rec.start();
+  rec.onresult=(e)=>{ document.getElementById('m').style.display='flex'; document.getElementById('n').value=e.results[0][0].transcript; }
+}
 </script>
-</body>
-</html>
+</body></html>
